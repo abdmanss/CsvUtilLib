@@ -9,7 +9,23 @@ namespace CsvUtilLib
 {
     public class CsvUtil
     {
-        public static List<string[]> FromCsv(string filename)
+        public static string[] GetHeaderFromCsv(string filename)
+        {
+            var csvText = File.ReadAllText(filename);
+            var lines = csvText.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            var values = lines.Select(s => s.Split(',')).ToList();
+            return values.FirstOrDefault();
+        }
+
+        public static List<string[]> GetDataFromCsv(string filename)
+        {
+            var csvText = File.ReadAllText(filename);
+            var lines = csvText.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+            var values = lines.Select(s => s.Split(',')).Skip(1).ToList();
+            return values;
+        }
+
+        public static List<string[]> GetAllRowsFromCsv(string filename)
         {
             var csvText = File.ReadAllText(filename);
             var lines = csvText.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();

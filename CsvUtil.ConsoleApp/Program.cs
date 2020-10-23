@@ -10,8 +10,10 @@ namespace CsvUtil.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var res1 = CsvUtilLib.CsvUtil.FromCsv($@"K:\Users\Ai\Downloads\جرد القمة.csv");
-            var ms = res1.Skip(1).Select(v =>
+            var resHeader = CsvUtilLib.CsvUtil.GetHeaderFromCsv($@"K:\Users\Ai\Downloads\جرد القمة.csv");
+            var resAll = CsvUtilLib.CsvUtil.GetAllRowsFromCsv($@"K:\Users\Ai\Downloads\جرد القمة.csv");
+            var resData = CsvUtilLib.CsvUtil.GetDataFromCsv($@"K:\Users\Ai\Downloads\جرد القمة.csv");
+            var ms = resData.Select(v =>
             {
                 var m = new CsvModel
                 {
