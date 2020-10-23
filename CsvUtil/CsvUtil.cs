@@ -8,7 +8,7 @@ namespace CsvUtilLib
 {
     public class CsvUtil
     {
-        public void From()
+        public void FromCsv(string filename)
         {
 
         }
