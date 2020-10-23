@@ -8,9 +8,9 @@ namespace CsvUtilLib
 {
     public class CsvUtil
     {
-        public void FromCsv(string filename)
+        public TModel FromCsv<TModel>(string filename)
         {
-
+            throw new NotImplementedException();
         }
     }
 }
