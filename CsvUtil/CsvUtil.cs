@@ -13,11 +13,7 @@ namespace CsvUtilLib
         {
             var csvText = File.ReadAllText(filename);
             var lines = csvText.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
-            var values = lines.Select(s =>
-            {
-                var vs = s.Split(',');
-                return vs;
-            }).ToList();
+            var values = lines.Select(s => s.Split(',')).ToList();
             var items = values.Select(s =>
             {
                 var m = new TModel();
