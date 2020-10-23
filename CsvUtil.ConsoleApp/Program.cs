@@ -10,6 +10,25 @@ namespace CsvUtil.ConsoleApp
     {
         static void Main(string[] args)
         {
+            var res1 = CsvUtilLib.CsvUtil.FromCsv($@"K:\Users\Ai\Downloads\جرد القمة.csv");
+            var ms = res1.Skip(1).Select(v =>
+            {
+                var m = new CsvModel
+                {
+                    SN = v[0] != "" ? Convert.ToInt32(v[0]) : 0,
+                    Code = v[1],
+                    Parent = v[2],
+                    Name = v[3],
+                    Unit = v[4],
+                    Qyantity = v[5] != "" ? Convert.ToDecimal(v[5]) : 0,
+                    Cost = v[6] != "" ? Convert.ToDecimal(v[6]) : 0,
+                    SalesPrice = v[7] != "" ? Convert.ToDecimal(v[7]) : 0,
+                };
+                return m;
+            }).ToList();
+
+            ms.ToString();
+
             var res = CsvUtilLib.CsvUtil.FromCsv<CsvModel>($@"K:\Users\Ai\Downloads\جرد القمة.csv", (m, v) =>
             {
                 m.SN = v[0] != "" ? Convert.ToInt32(v[0]) : 0;
